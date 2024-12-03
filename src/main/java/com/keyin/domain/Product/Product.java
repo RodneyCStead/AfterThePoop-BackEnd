@@ -12,9 +12,9 @@ public class Product {
     private Long productId;
     private String productName;
     private String description;
-    private double kPercent;
-    private double nPercent;
-    private double pPercent;
+    private double kPercent; // Potassium percent
+    private double nPercent; // Nitrogen percent
+    private double pPercent; // Phosphorus percent
 
 
     public Long getProductId() {
