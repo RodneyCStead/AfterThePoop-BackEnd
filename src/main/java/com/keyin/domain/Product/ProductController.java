@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/post-product")
 public class ProductController {
@@ -14,7 +16,7 @@ public class ProductController {
     private ProductServices productServices;
 
     @PostMapping
-    public Product createProduct(@RequestBody Product newProduct) {
-        return productServices.createProduct(newProduct);
+    public Iterable<Product> createProducts(@RequestBody List<Product> products) {
+        return productServices.createProducts(products);
     }
 }
