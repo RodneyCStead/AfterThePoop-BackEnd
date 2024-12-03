@@ -1,0 +1,107 @@
+[
+  {
+    "productName": "SuperGrow Max",
+    "description": "High-quality fertilizer for all plants",
+    "kpercent": 10.00,
+    "ppercent": 5.00,
+    "npercent": 15.00
+  },
+  {
+    "productName": "EcoGreen Boost",
+    "description": "Organic fertilizer for vegetables",
+    "kpercent": 8.00,
+    "ppercent": 4.00,
+    "npercent": 12.00
+  },
+  {
+    "productName": "FlowerPower Plus",
+    "description": "Premium fertilizer for flowers",
+    "kpercent": 12.00,
+    "ppercent": 6.00,
+    "npercent": 18.00
+  },
+  {
+    "productName": "LawnMaster Pro",
+    "description": "Balanced fertilizer for lawns",
+    "kpercent": 9.00,
+    "ppercent": 5.00,
+    "npercent": 14.00
+  },
+  {
+    "productName": "FruitBloom Supreme",
+    "description": "Special fertilizer for fruit trees",
+    "kpercent": 11.00,
+    "ppercent": 7.00,
+    "npercent": 16.00
+  },
+  {
+    "productName": "GardenGenius",
+    "description": "All-purpose fertilizer for gardens",
+    "kpercent": 10.50,
+    "ppercent": 5.50,
+    "npercent": 15.50
+  },
+  {
+    "productName": "ShrubShield",
+    "description": "Fast-acting fertilizer for shrubs",
+    "kpercent": 9.50,
+    "ppercent": 4.50,
+    "npercent": 13.50
+  },
+  {
+    "productName": "PotPerfection",
+    "description": "Slow-release fertilizer for pots",
+    "kpercent": 8.50,
+    "ppercent": 3.50,
+    "npercent": 12.50
+  },
+  {
+    "productName": "HydroNutrient",
+    "description": "Liquid fertilizer for hydroponics",
+    "kpercent": 7.00,
+    "ppercent": 3.00,
+    "npercent": 10.00
+  },
+  {
+    "productName": "GranuleGrow",
+    "description": "Granular fertilizer for large areas",
+    "kpercent": 11.50,
+    "ppercent": 6.50,
+    "npercent": 17.50
+  },
+  {
+    "productName": "HerbHaven",
+    "description": "Eco-friendly fertilizer for herbs",
+    "kpercent": 6.00,
+    "ppercent": 2.50,
+    "npercent": 9.00
+  },
+  {
+    "productName": "RoseRadiance",
+    "description": "Nutrient-rich fertilizer for roses",
+    "kpercent": 12.50,
+    "ppercent": 7.50,
+    "npercent": 18.50
+  },
+  {
+    "productName": "OrchidOptima",
+    "description": "Custom blend fertilizer for orchids",
+    "kpercent": 10.00,
+    "ppercent": 5.00,
+    "npercent": 15.00
+  },
+  {
+    "productName": "TomatoTonic",
+    "description": "High-potassium fertilizer for tomatoes",
+    "kpercent": 13.00,
+    "ppercent": 8.00,
+    "npercent": 20.00
+  },
+  {
+    "productName": "IndoorInspire",
+    "description": "Balanced fertilizer for indoor plants",
+    "kpercent": 9.00,
+    "ppercent": 4.00,
+    "npercent": 13.00
+  }
+]
