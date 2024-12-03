@@ -1,14 +1,12 @@
 package com.keyin.domain.Transactions;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Transactions {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "transactions_sequence", sequenceName = "transactions_sequence", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(generator = "transactions_sequence")
     private Long transId;
     private Long buyerId;
     private Long sellerId;

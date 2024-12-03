@@ -1,4 +1,6 @@
 package com.keyin.domain.Transactions;
 
-public interface TransactionsRepository {
+import org.springframework.data.repository.CrudRepository;
+
+public interface TransactionsRepository extends CrudRepository<Transactions, Long> {
 }
