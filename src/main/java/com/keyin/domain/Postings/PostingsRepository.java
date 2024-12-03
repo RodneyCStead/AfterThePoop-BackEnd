@@ -1,4 +1,7 @@
 package com.keyin.domain.Postings;
 
-public interface PostingsRepository {
+import org.springframework.data.repository.CrudRepository;
+
+public interface PostingsRepository extends CrudRepository<Posting, Long> {
+
 }

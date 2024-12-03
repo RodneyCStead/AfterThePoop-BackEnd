@@ -2,20 +2,20 @@ package com.keyin.domain.Product;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 
 @Entity
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "product_sequence", sequenceName = "product_sequence", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(generator = "product_sequence")
     private Long productId;
     private String productName;
     private String description;
     private double kPercent; // Potassium percent
     private double nPercent; // Nitrogen percent
     private double pPercent; // Phosphorus percent
-
 
     public Long getProductId() {
         return productId;

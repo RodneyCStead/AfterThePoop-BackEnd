@@ -1,4 +1,4 @@
-package com.keyin;
+package com.keyin.domain;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -2,13 +2,14 @@ package com.keyin.domain.Postings;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 
 @Entity
 public class Posting {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "posting_sequence", sequenceName = "posting_sequence", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(generator = "posting_sequence")
     private Long postingId;
     private Long sellerId;
     private Long productId;
