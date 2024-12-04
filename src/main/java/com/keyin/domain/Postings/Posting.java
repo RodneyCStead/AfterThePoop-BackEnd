@@ -1,9 +1,9 @@
 package com.keyin.domain.Postings;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
+import com.keyin.domain.Product.Product;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Posting {
@@ -11,11 +11,14 @@ public class Posting {
     @SequenceGenerator(name = "posting_sequence", sequenceName = "posting_sequence", allocationSize = 1, initialValue = 1)
     @GeneratedValue(generator = "posting_sequence")
     private Long postingId;
-    private Long sellerId;
-    private Long productId;
+    private String sellerId; // Changed to String to match AWS user ID
+    @ElementCollection
+    private List<Long> productId;
     private int quantity;
     private double price;
 
+    @ManyToMany
+    private List<Product> products;
 
     public Long getPostingId() {
         return postingId;
@@ -25,19 +28,19 @@ public class Posting {
         this.postingId = postingId;
     }
 
-    public Long getSellerId() {
+    public String getSellerId() {
         return sellerId;
     }
 
-    public void setSellerId(Long sellerId) {
+    public void setSellerId(String sellerId) {
         this.sellerId = sellerId;
     }
 
-    public Long getProductId() {
+    public List<Long> getProductId() {
         return productId;
     }
 
-    public void setProductId(Long productId) {
+    public void setProductId(List<Long> productId) {
         this.productId = productId;
     }
 
@@ -55,5 +58,13 @@ public class Posting {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }

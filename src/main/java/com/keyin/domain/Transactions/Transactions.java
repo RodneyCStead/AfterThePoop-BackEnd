@@ -1,65 +1,50 @@
 package com.keyin.domain.Transactions;
 
+import com.keyin.domain.Postings.Posting;
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 public class Transactions {
     @Id
-    @SequenceGenerator(name = "transactions_sequence", sequenceName = "transactions_sequence", allocationSize = 1, initialValue = 1)
-    @GeneratedValue(generator = "transactions_sequence")
-    private Long transId;
-    private Long buyerId;
-    private Long sellerId;
-    private Long postingId;
-    private int quantity;
-    private double price;
+    @SequenceGenerator(name = "transaction_sequence", sequenceName = "transaction_sequence", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(generator = "transaction_sequence")
+    private Long transactionId;
+    private String sellerId; // Changed to String to match AWS user ID
+    private String buyerId; // Changed to String to match AWS user ID
 
+    @OneToMany
+    private List<Posting> postings;
 
-    public Long getTransId() {
-        return transId;
+    public Long getTransactionId() {
+        return transactionId;
     }
 
-    public void setTransId(Long transId) {
-        this.transId = transId;
+    public void setTransactionId(Long transactionId) {
+        this.transactionId = transactionId;
     }
 
-    public Long getBuyerId() {
-        return buyerId;
-    }
-
-    public void setBuyerId(Long buyerId) {
-        this.buyerId = buyerId;
-    }
-
-    public Long getSellerId() {
+    public String getSellerId() {
         return sellerId;
     }
 
-    public void setSellerId(Long sellerId) {
+    public void setSellerId(String sellerId) {
         this.sellerId = sellerId;
     }
 
-    public Long getPostingId() {
-        return postingId;
+    public String getBuyerId() {
+        return buyerId;
     }
 
-    public void setPostingId(Long postingId) {
-        this.postingId = postingId;
+    public void setBuyerId(String buyerId) {
+        this.buyerId = buyerId;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public List<Posting> getPostings() {
+        return postings;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
+    public void setPostings(List<Posting> postings) {
+        this.postings = postings;
     }
 }
