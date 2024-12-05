@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 
 @Service
@@ -29,12 +31,17 @@ public class TransactionServices {
         posting.setQuantity(posting.getQuantity() - quantity);
         postingRepository.save(posting);
 
+        BigDecimal price = BigDecimal.valueOf(posting.getPrice());
+        BigDecimal quantityBD = BigDecimal.valueOf(quantity);
+        BigDecimal transactionAmount = price.multiply(quantityBD).setScale(2, RoundingMode.HALF_UP);
+
         Transaction transaction = new Transaction();
         transaction.setPosting(posting);
         transaction.setSellerId(sellerId);
         transaction.setBuyerId(buyerId);
         transaction.setQuantityPurchased(quantity);
         transaction.setTransactionDate(LocalDate.now());
+        transaction.setTransactionAmount(transactionAmount.doubleValue());
 
         return transactionRepository.save(transaction);
     }

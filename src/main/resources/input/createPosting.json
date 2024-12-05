@@ -8,9 +8,16 @@
   },
   {
     "productId": [
-      2,3
+      2
     ],
     "quantity": 20,
     "price": 17.99
+  },
+  {
+    "productId": [
+      3
+    ],
+    "quantity": 25,
+    "price": 11.99
   }
 ]
