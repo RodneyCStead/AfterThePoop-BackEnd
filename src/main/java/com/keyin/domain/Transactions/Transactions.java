@@ -13,7 +13,7 @@ public class Transactions {
     private String sellerId; // Changed to String to match AWS user ID
     private String buyerId; // Changed to String to match AWS user ID
 
-    @OneToMany
+    @ManyToOne
     private List<Posting> postings;
 
     public Long getTransactionId() {
