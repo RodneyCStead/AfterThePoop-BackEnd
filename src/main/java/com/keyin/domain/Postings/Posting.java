@@ -1,7 +1,9 @@
 package com.keyin.domain.Postings;
 
 import com.keyin.domain.Product.Product;
+import com.keyin.domain.Transactions.Transactions;
 import jakarta.persistence.*;
+
 
 import java.util.List;
 
@@ -19,6 +21,9 @@ public class Posting {
 
     @ManyToMany
     private List<Product> products;
+
+    @OneToMany
+    private List<Transactions> transactions;
 
     public Long getPostingId() {
         return postingId;
