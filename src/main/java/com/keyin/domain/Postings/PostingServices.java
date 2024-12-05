@@ -31,9 +31,23 @@ public class PostingServices {
         return postingRepository.saveAll(postings);
     }
 
-    public void updatePostingQuantity(Long postingId, int quantity) {
-        Posting posting = postingRepository.findById(postingId).orElseThrow(() -> new RuntimeException("Posting not found"));
-        posting.setQuantity(posting.getQuantity() - quantity);
-        postingRepository.save(posting);
+    public Iterable<Posting> getPostings() {
+        return postingRepository.findAll();
+    }
+
+    public Iterable<Posting> getPostingsBySellerId(String sellerId) {
+        return postingRepository.findBySellerId(sellerId);
+    }
+
+    public Iterable<Posting> searchByNPercent(double npercent) {
+        return postingRepository.findByNPercent(npercent);
+    }
+
+    public Iterable<Posting> searchByKPercent(double kpercent) {
+        return postingRepository.findByKPercent(kpercent);
+    }
+
+    public Iterable<Posting> searchByPPercent(double ppercent) {
+        return postingRepository.findByPPercent(ppercent);
     }
 }
