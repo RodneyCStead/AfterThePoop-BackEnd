@@ -2,19 +2,21 @@ package com.keyin.domain.Transactions;
 
 import com.keyin.domain.Postings.Posting;
 import jakarta.persistence.*;
-import java.util.List;
+
+import java.time.LocalDate;
 
 @Entity
-public class Transactions {
+public class Transaction {
     @Id
     @SequenceGenerator(name = "transaction_sequence", sequenceName = "transaction_sequence", allocationSize = 1, initialValue = 1)
     @GeneratedValue(generator = "transaction_sequence")
     private Long transactionId;
     private String sellerId; // Changed to String to match AWS user ID
     private String buyerId; // Changed to String to match AWS user ID
+    private LocalDate transactionDate;
 
     @ManyToOne
-    private List<Posting> postings;
+    private Posting posting;
 
     public Long getTransactionId() {
         return transactionId;
@@ -39,12 +41,23 @@ public class Transactions {
     public void setBuyerId(String buyerId) {
         this.buyerId = buyerId;
     }
-
-    public List<Posting> getPostings() {
-        return postings;
+    
+    public LocalDate getTransactionDate() {
+        return transactionDate;
+    }
+    
+    public void setTransactionDate(LocalDate transactionDate) {
+        this.transactionDate = transactionDate;
     }
 
-    public void setPostings(List<Posting> postings) {
-        this.postings = postings;
+    public Posting getPosting() {
+        return posting;
+    }
+
+    public void setPosting(Posting posting) {
+        this.posting = posting;
+    }
+
+    public void setQuantityPurchased(int quantity) {
     }
 }
