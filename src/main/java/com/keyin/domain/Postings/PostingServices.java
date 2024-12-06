@@ -50,4 +50,8 @@ public class PostingServices {
     public Iterable<Posting> searchByPPercent(double ppercent) {
         return postingRepository.findByPPercent(ppercent);
     }
+
+    public Iterable<Posting> searchByPrice(double price) {
+        return postingRepository.findByPrice(price);
+    }
 }

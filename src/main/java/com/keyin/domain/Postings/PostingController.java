@@ -43,4 +43,9 @@ public class PostingController {
         return postingServices.searchByPPercent(ppercent);
     }
 
+    @GetMapping("/searchByPrice")
+    public Iterable<Posting> searchByPrice(@RequestParam double price) {
+        return postingServices.searchByPrice(price);
+    }
+
 }

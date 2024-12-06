@@ -16,4 +16,6 @@ public interface PostingRepository extends CrudRepository<Posting, Long> {
 
     @Query("SELECT p FROM Posting p JOIN p.products prod WHERE prod.pPercent = :ppercent")
     Iterable<Posting> findByPPercent(@Param("ppercent") double ppercent);
+
+    Iterable<Posting> findByPrice(double price);
 }
