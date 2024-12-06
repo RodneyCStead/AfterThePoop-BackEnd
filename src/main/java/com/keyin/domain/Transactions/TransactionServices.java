@@ -42,7 +42,19 @@ public class TransactionServices {
         transaction.setQuantityPurchased(quantity);
         transaction.setTransactionDate(LocalDate.now());
         transaction.setTransactionAmount(transactionAmount.doubleValue());
+        transaction.setPoundsBought(quantity); // Set the new field
 
         return transactionRepository.save(transaction);
     }
+
+    public Iterable<Transaction> getAllTransactions() {
+        return transactionRepository.findAll();
+    }
+
+    public Transaction getTransactionById(Long transactionId) {
+        return transactionRepository.findById(transactionId)
+                .orElseThrow(() -> new RuntimeException("Transaction not found"));
+    }
+
+
 }

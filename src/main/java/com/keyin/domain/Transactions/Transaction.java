@@ -15,6 +15,7 @@ public class Transaction {
     private String buyerId; // Changed to String to match AWS user ID
     private LocalDate transactionDate;
     private double transactionAmount;
+    private double quantityPurchased;
 
     @ManyToOne
     private Posting posting;
@@ -68,6 +69,17 @@ public class Transaction {
     }
 
     public void setQuantityPurchased(int quantity) {
+    }
 
+    public double getQuantityPurchased() {
+        return quantityPurchased;
+    }
+
+    public void setPoundsBought(int quantity) {
+        this.quantityPurchased = quantity;
+    }
+
+    public double getPoundsBought() {
+        return quantityPurchased;
     }
 }
