@@ -14,4 +14,14 @@ public class TransactionController {
     public Transaction createTransaction(@RequestParam Long postingId, @RequestParam String sellerId, @RequestParam String buyerId, @RequestParam int quantity) {
         return transactionServices.createTransaction(postingId, sellerId, buyerId, quantity);
     }
+
+    @GetMapping
+    public Iterable<Transaction> getAllTransactions() {
+        return transactionServices.getAllTransactions();
+    }
+
+    @GetMapping("/transaction")
+    public Transaction getTransactionById(@RequestParam Long transactionId) {
+        return transactionServices.getTransactionById(transactionId);
+    }
 }
