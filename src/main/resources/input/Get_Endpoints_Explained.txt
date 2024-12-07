@@ -1,0 +1,238 @@
+### GET ENDPOINTS ###
+-----------------------------
+When following this Look through the Posting_Endpoint_Explained.txt file first!
+-----------------------------
+
+SearchByPrice searches postings made for a specified price that is passed as a parameter in the endpoint
+
+    -> http://localhost:8080/fertilizer/searchByPrice?price=19.99
+        -> expected output:
+            [
+                {
+                    "postingId": 1,
+                    "sellerId": "ExampleUser123",
+                    "productId": [
+                        1
+                    ],
+                    "quantity": 40,
+                    "price": 19.99, <--- This is the price that was searched for
+                    "products": [
+                        {
+                            "productId": 1,
+                            "productName": "SuperGrow Max",
+                            "description": "High-quality fertilizer for all plants",
+                            "ppercent": 5.0,
+                            "kpercent": 10.0,
+                            "npercent": 15.0
+                        }
+                    ]
+                }
+            ]
+SearchByPPercent searches postings made for a specified P percent that is passed as a parameter in the endpoint
+
+    -> http://localhost:8080/fertilizer/searchByPPercent?ppercent=5.0
+        -> expected output:
+            [
+                {
+                    "postingId": 1,
+                    "sellerId": "ExampleUser123",
+                    "productId": [
+                        1
+                    ],
+                    "quantity": 40,
+                    "price": 19.99,
+                    "products": [
+                        {
+                            "productId": 1,
+                            "productName": "SuperGrow Max",
+                            "description": "High-quality fertilizer for all plants",
+                            "ppercent": 5.0, <--- This is the P percent that was searched for
+                            "kpercent": 10.0,
+                            "npercent": 15.0
+                        }
+                    ]
+                }
+            ]
+
+SearchByKPercent searches postings made for a specified K percent that is passed as a parameter in the endpoint
+
+    http://localhost:8080/fertilizer/searchByKPercent?kpercent=8.0
+        -> expected output:
+            [
+                {
+                    "postingId": 2,
+                    "sellerId": "ExampleUser123",
+                    "productId": [
+                        2
+                    ],
+                    "quantity": 20,
+                    "price": 17.99,
+                    "products": [
+                        {
+                            "productId": 2,
+                            "productName": "EcoGreen Boost",
+                            "description": "Organic fertilizer for vegetables",
+                            "ppercent": 4.0,
+                            "kpercent": 8.0, <--- This is the K percent that was searched for
+                            "npercent": 12.0
+                        }
+                    ]
+                }
+            ]
+
+SearchByNPercent searches postings made for a specified N percent that is passed as a parameter in the endpoint
+
+        http://localhost:8080/fertilizer/searchByNPercent?npercent=15.0
+            -> expected output:
+                [
+                    {
+                        "postingId": 1,
+                        "sellerId": "ExampleUser123",
+                        "productId": [
+                            1
+                        ],
+                        "quantity": 40,
+                        "price": 19.99,
+                        "products": [
+                            {
+                                "productId": 1,
+                                "productName": "SuperGrow Max",
+                                "description": "High-quality fertilizer for all plants",
+                                "ppercent": 5.0,
+                                "kpercent": 10.0,
+                                "npercent": 15.0 <--- This is the N percent that was searched for
+                            }
+                        ]
+                    }
+                ]
+
+Get Specific transaction by transactionId by passing transactionId as a parameter in the endpoint
+
+    http://localhost:8080/buy/transaction?transactionId=1
+        -> expected output:
+            {
+                "transactionId": 1, <--- This is the transactionId that was searched for
+                "sellerId": "ExampleUser123",
+                "buyerId": "rodney@123",
+                "transactionDate": "2024-12-06",
+                "transactionAmount": 199.9,
+                "quantityPurchased": 10.0,
+                "posting": {
+                    "postingId": 1,
+                    "sellerId": "ExampleUser123",
+                    "productId": [
+                        1
+                    ],
+                    "quantity": 40,
+                    "price": 19.99,
+                    "products": [
+                        {
+                            "productId": 1,
+                            "productName": "SuperGrow Max",
+                            "description": "High-quality fertilizer for all plants",
+                            "ppercent": 5.0,
+                            "kpercent": 10.0,
+                            "npercent": 15.0
+                        }
+                    ]
+                },
+                "poundsBought": 10.0
+            }
+
+Get all transactions made
+    -> http://localhost:8080/buy
+        -> expected output -> only one displays due to only one made up to this point if following the guide:
+            [
+                {
+                    "transactionId": 1,
+                    "sellerId": "ExampleUser123",
+                    "buyerId": "rodney@123",
+                    "transactionDate": "2024-12-06",
+                    "transactionAmount": 199.9,
+                    "quantityPurchased": 10.0,
+                    "posting": {
+                        "postingId": 1,
+                        "sellerId": "ExampleUser123",
+                        "productId": [
+                            1
+                        ],
+                        "quantity": 40,
+                        "price": 19.99,
+                        "products": [
+                            {
+                                "productId": 1,
+                                "productName": "SuperGrow Max",
+                                "description": "High-quality fertilizer for all plants",
+                                "ppercent": 5.0,
+                                "kpercent": 10.0,
+                                "npercent": 15.0
+                            }
+                        ]
+                    },
+                    "poundsBought": 10.0
+                }
+            ]
+
+Get all postings made by specific seller by passing sellerId as a parameter in the endpoint
+
+    http://localhost:8080/fertilizer/sellerPostings?sellerId=ExampleUser123
+        -> expected output:
+           [
+               {
+                   "postingId": 1,
+                   "sellerId": "ExampleUser123",
+                   "productId": [
+                       1
+                   ],
+                   "quantity": 40,
+                   "price": 19.99,
+                   "products": [
+                       {
+                           "productId": 1,
+                           "productName": "SuperGrow Max",
+                           "description": "High-quality fertilizer for all plants",
+                           "ppercent": 5.0,
+                           "kpercent": 10.0,
+                           "npercent": 15.0
+                       }
+                   ]
+               },
+               {
+                   "postingId": 2,
+                   "sellerId": "ExampleUser123",
+                   "productId": [
+                       2
+                   ],
+                   "quantity": 20,
+                   "price": 17.99,
+                   "products": [
+                       {
+                           "productId": 2,
+                           "productName": "EcoGreen Boost",
+                           "description": "Organic fertilizer for vegetables",
+                           "ppercent": 4.0,
+                           "kpercent": 8.0,
+                           "npercent": 12.0
+                       }
+                   ]
+               },
+               {
+                   "postingId": 3,
+                   "sellerId": "ExampleUser123",
+                   "productId": [
+                       3
+                   ],
+                   "quantity": 25,
+                   "price": 11.99,
+                   "products": [
+                       {
+                           "productId": 3,
+                           "productName": "FlowerPower Plus",
+                           "description": "Premium fertilizer for flowers",
+                           "ppercent": 6.0,
+                           "kpercent": 12.0,
+                           "npercent": 18.0
+                       }
+                   ]
+               }
+           ]
