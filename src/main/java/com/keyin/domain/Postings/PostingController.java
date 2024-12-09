@@ -3,7 +3,6 @@ package com.keyin.domain.Postings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/fertilizer")
@@ -13,10 +12,9 @@ public class PostingController {
     @Autowired
     private PostingServices postingServices;
 
-
     @PostMapping
-    public Iterable<Posting> createPostings(@RequestBody List<Posting> postings, @RequestParam(defaultValue = "unknownUser") String sellerId) {
-        return postingServices.createPostings(postings, sellerId);
+    public Posting createPosting(@RequestBody Posting posting, @RequestParam(defaultValue = "unknownUser") String sellerId) {
+        return postingServices.createPosting(posting, sellerId);
     }
 
     @GetMapping

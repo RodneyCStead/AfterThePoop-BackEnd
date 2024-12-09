@@ -5,8 +5,9 @@ import com.keyin.domain.Product.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PostingServices {
@@ -17,18 +18,20 @@ public class PostingServices {
     @Autowired
     private ProductRepository productRepository;
 
-    public Iterable<Posting> createPostings(List<Posting> postings, String sellerId) {
-        for (Posting posting : postings) {
-            List<Product> products = new ArrayList<>();
-            for (Long productId : posting.getProductId()) {
-                Product product = productRepository.findById(productId)
-                        .orElseThrow(() -> new RuntimeException("Product not found"));
-                products.add(product);
+    public Posting createPosting(Posting posting, String sellerId) {
+        List<Long> productIds = posting.getProducts().stream().map(product -> {
+            Optional<Product> existingProduct = Optional.ofNullable(productRepository.findByProductName(product.getProductName()));
+            if (existingProduct.isPresent()) {
+                throw new IllegalArgumentException("Product with name " + product.getProductName() + " already exists.");
             }
-            posting.setProducts(products);
-            posting.setSellerId(sellerId);
-        }
-        return postingRepository.saveAll(postings);
+            Product savedProduct = productRepository.save(product);
+            return savedProduct.getProductId();
+        }).collect(Collectors.toList());
+
+        posting.setProductId(productIds);
+        posting.setSellerId(sellerId);
+        postingRepository.save(posting);
+        return posting;
     }
 
     public Iterable<Posting> getPostings() {

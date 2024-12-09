@@ -1,23 +1,13 @@
-[
-  {
-    "productId": [
-      1
-    ],
-    "quantity": 50,
-    "price": 19.99
-  },
-  {
-    "productId": [
-      2
-    ],
-    "quantity": 20,
-    "price": 17.99
-  },
-  {
-    "productId": [
-      3
-    ],
-    "quantity": 25,
-    "price": 11.99
-  }
-]
+{
+  "product": [
+    {
+      "productName": "Super Saiyan",
+      "description": "Its OVER 9000!!!",
+      "kpercent": 10.0,
+      "npercent": 5.0,
+      "ppercent": 2.0
+    }
+  ],
+  "quantity": 9001,
+  "price": 19.99
+}
