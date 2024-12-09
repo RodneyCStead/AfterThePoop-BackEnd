@@ -7,6 +7,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/fertilizer")
+@CrossOrigin(origins = "http://localhost:3000")
 public class PostingController {
 
     @Autowired
