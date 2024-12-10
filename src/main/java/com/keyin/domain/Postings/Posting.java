@@ -1,5 +1,6 @@
 package com.keyin.domain.Postings;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.keyin.domain.Product.Product;
 import com.keyin.domain.Transactions.Transaction;
 import jakarta.persistence.*;
@@ -22,6 +23,7 @@ public class Posting {
     private Product product;
 
     @OneToMany(mappedBy = "posting", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private Set<Transaction> transactions;
 
     public Long getPostingId() {
