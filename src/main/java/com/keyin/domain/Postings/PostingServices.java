@@ -19,15 +19,31 @@ public class PostingServices {
 
     public Posting createPosting(Posting posting, String sellerId) {
         Product product = posting.getProduct();
+
         Optional<Product> existingProduct = Optional.ofNullable(productRepository.findByProductName(product.getProductName()));
+
         if (existingProduct.isPresent()) {
-            throw new IllegalArgumentException("Product with name " + product.getProductName() + " already exists.");
+
+            Optional<Posting> existingPosting = postingRepository.findByNutrients(
+                    product.getNPercent(), product.getKPercent(), product.getPPercent()
+            );
+
+            if (existingPosting.isPresent()) {
+
+                Posting foundPosting = existingPosting.get();
+                foundPosting.setQuantity(foundPosting.getQuantity() + posting.getQuantity());
+                postingRepository.save(foundPosting);
+                return foundPosting;
+            } else {
+                throw new IllegalArgumentException("Product with name " + product.getProductName() + " already exists with different nutrients.");
+            }
+        } else {
+            Product savedProduct = productRepository.save(product);
+            posting.setProductId(savedProduct.getProductId());
+            posting.setSellerId(sellerId);
+            postingRepository.save(posting);
+            return posting;
         }
-        Product savedProduct = productRepository.save(product);
-        posting.setProductId(savedProduct.getProductId());
-        posting.setSellerId(sellerId);
-        postingRepository.save(posting);
-        return posting;
     }
 
     public Iterable<Posting> getPostings() {
