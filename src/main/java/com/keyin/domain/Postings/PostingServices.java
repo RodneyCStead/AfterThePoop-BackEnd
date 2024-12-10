@@ -5,9 +5,8 @@ import com.keyin.domain.Product.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 @Service
 public class PostingServices {
@@ -19,16 +18,13 @@ public class PostingServices {
     private ProductRepository productRepository;
 
     public Posting createPosting(Posting posting, String sellerId) {
-        List<Long> productIds = posting.getProducts().stream().map(product -> {
-            Optional<Product> existingProduct = Optional.ofNullable(productRepository.findByProductName(product.getProductName()));
-            if (existingProduct.isPresent()) {
-                throw new IllegalArgumentException("Product with name " + product.getProductName() + " already exists.");
-            }
-            Product savedProduct = productRepository.save(product);
-            return savedProduct.getProductId();
-        }).collect(Collectors.toList());
-
-        posting.setProductId(productIds);
+        Product product = posting.getProduct();
+        Optional<Product> existingProduct = Optional.ofNullable(productRepository.findByProductName(product.getProductName()));
+        if (existingProduct.isPresent()) {
+            throw new IllegalArgumentException("Product with name " + product.getProductName() + " already exists.");
+        }
+        Product savedProduct = productRepository.save(product);
+        posting.setProductId(savedProduct.getProductId());
         posting.setSellerId(sellerId);
         postingRepository.save(posting);
         return posting;

@@ -1,13 +1,11 @@
 {
-  "product": [
-    {
-      "productName": "Super Saiyan",
-      "description": "Its OVER 9000!!!",
-      "kpercent": 10.0,
-      "npercent": 5.0,
-      "ppercent": 2.0
-    }
-  ],
+  "product": {
+    "productName": "Super Saiyan",
+    "description": "Its OVER 9000!!!",
+    "kpercent": 10.0,
+    "npercent": 5.0,
+    "ppercent": 2.0
+  },
   "quantity": 9001,
   "price": 19.99
 }
