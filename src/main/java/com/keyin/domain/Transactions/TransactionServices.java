@@ -2,6 +2,7 @@ package com.keyin.domain.Transactions;
 
 import com.keyin.domain.Postings.Posting;
 import com.keyin.domain.Postings.PostingRepository;
+import com.keyin.domain.Postings.PostingServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +19,9 @@ public class TransactionServices {
 
     @Autowired
     private PostingRepository postingRepository;
+
+    @Autowired
+    private PostingServices postingServices;
 
     @Transactional
     public Transaction createTransaction(Long postingId, String sellerId, String buyerId, int quantity) {
@@ -42,9 +46,15 @@ public class TransactionServices {
         transaction.setQuantityPurchased(quantity);
         transaction.setTransactionDate(LocalDate.now());
         transaction.setTransactionAmount(transactionAmount.doubleValue());
-        transaction.setPoundsBought(quantity); // Set the new field
+        transaction.setPoundsBought(quantity);
 
-        return transactionRepository.save(transaction);
+        Transaction savedTransaction = transactionRepository.save(transaction);
+
+        if (posting.getQuantity() == 0) {
+            postingServices.deletePosting(postingId);
+        }
+
+        return savedTransaction;
     }
 
     public Iterable<Transaction> getAllTransactions() {
@@ -55,6 +65,4 @@ public class TransactionServices {
         return transactionRepository.findById(transactionId)
                 .orElseThrow(() -> new RuntimeException("Transaction not found"));
     }
-
-
 }
