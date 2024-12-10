@@ -18,6 +18,7 @@ public class Transaction {
     private double quantityPurchased;
 
     @ManyToOne
+    @JoinColumn(name = "posting_id", nullable = false)
     private Posting posting;
 
     public Long getTransactionId() {
