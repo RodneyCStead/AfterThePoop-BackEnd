@@ -4,7 +4,6 @@ import com.keyin.domain.Product.Product;
 import com.keyin.domain.Transactions.Transaction;
 import jakarta.persistence.*;
 
-
 import java.util.List;
 
 @Entity
@@ -14,13 +13,12 @@ public class Posting {
     @GeneratedValue(generator = "posting_sequence")
     private Long postingId;
     private String sellerId; // Changed to String to match AWS user ID
-    @ElementCollection
-    private List<Long> productId;
+    private Long productId;
     private int quantity;
     private double price;
 
-    @ManyToMany
-    private List<Product> products;
+    @ManyToOne
+    private Product product;
 
     @OneToMany
     private List<Transaction> transactions;
@@ -41,11 +39,11 @@ public class Posting {
         this.sellerId = sellerId;
     }
 
-    public List<Long> getProductId() {
+    public Long getProductId() {
         return productId;
     }
 
-    public void setProductId(List<Long> productId) {
+    public void setProductId(Long productId) {
         this.productId = productId;
     }
 
@@ -65,13 +63,19 @@ public class Posting {
         this.price = price;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProduct(List<Product> products) {
-        this.products = products;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
 
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
 }
