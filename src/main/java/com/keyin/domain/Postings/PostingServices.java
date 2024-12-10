@@ -2,6 +2,8 @@ package com.keyin.domain.Postings;
 
 import com.keyin.domain.Product.Product;
 import com.keyin.domain.Product.ProductRepository;
+import com.keyin.domain.Transactions.TransactionRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,9 @@ public class PostingServices {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private TransactionRepository transactionRepository;
 
     public Posting createPosting(Posting posting, String sellerId) {
         Product product = posting.getProduct();
@@ -68,5 +73,11 @@ public class PostingServices {
 
     public Iterable<Posting> searchByPrice(double price) {
         return postingRepository.findByPrice(price);
+    }
+
+    @Transactional
+    public void deletePosting(Long postingId) {
+        transactionRepository.deleteByPosting_PostingId(postingId);
+        postingRepository.deleteById(postingId);
     }
 }

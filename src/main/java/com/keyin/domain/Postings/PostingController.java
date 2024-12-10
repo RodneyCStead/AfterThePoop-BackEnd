@@ -47,4 +47,9 @@ public class PostingController {
         return postingServices.searchByPrice(price);
     }
 
+    @PostMapping("/Delete")
+    public void deletePosting(@RequestParam Long postingId) {
+        postingServices.deletePosting(postingId);
+    }
+
 }

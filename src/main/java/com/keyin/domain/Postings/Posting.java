@@ -5,6 +5,7 @@ import com.keyin.domain.Transactions.Transaction;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Posting {
@@ -20,8 +21,8 @@ public class Posting {
     @ManyToOne
     private Product product;
 
-    @OneToMany
-    private List<Transaction> transactions;
+    @OneToMany(mappedBy = "posting", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Transaction> transactions;
 
     public Long getPostingId() {
         return postingId;
@@ -71,11 +72,11 @@ public class Posting {
         this.product = product;
     }
 
-    public List<Transaction> getTransactions() {
+    public Set<Transaction> getTransactions() {
         return transactions;
     }
 
-    public void setTransactions(List<Transaction> transactions) {
+    public void setTransactions(Set<Transaction> transactions) {
         this.transactions = transactions;
     }
 }
