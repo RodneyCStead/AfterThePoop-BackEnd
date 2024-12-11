@@ -5,7 +5,6 @@ import com.keyin.domain.Product.Product;
 import com.keyin.domain.Transactions.Transaction;
 import jakarta.persistence.*;
 
-import java.util.List;
 import java.util.Set;
 
 @Entity

@@ -62,34 +62,35 @@ public class PostingServices {
     }
 
     public Iterable<Posting> getPostings() {
-        return postingRepository.findAll();
+        return postingRepository.findByQuantityGreaterThan(0);
     }
 
     public Iterable<Posting> getPostingsBySellerId(String sellerId) {
-        return postingRepository.findBySellerId(sellerId);
+        return postingRepository.findBySellerIdAndQuantityGreaterThan(sellerId, 0);
     }
 
     public Iterable<Posting> searchByNPercent(double npercent) {
-        return postingRepository.findByNPercent(npercent);
+        return postingRepository.findByNPercentAndQuantityGreaterThan(npercent, 0);
     }
 
     public Iterable<Posting> searchByKPercent(double kpercent) {
-        return postingRepository.findByKPercent(kpercent);
+        return postingRepository.findByKPercentAndQuantityGreaterThan(kpercent, 0);
     }
 
     public Iterable<Posting> searchByPPercent(double ppercent) {
-        return postingRepository.findByPPercent(ppercent);
+        return postingRepository.findByPPercentAndQuantityGreaterThan(ppercent, 0);
     }
 
     public Iterable<Posting> searchByPrice(double price) {
-        return postingRepository.findByPrice(price);
+        return postingRepository.findByPriceAndQuantityGreaterThan(price, 0);
     }
 
     @Transactional
     public void deletePosting(Long postingId) {
-        transactionRepository.deleteByPosting_PostingId(postingId);
-        postingRepository.deleteById(postingId);
-        resetPostingSequenceIfEmpty();
+        Posting posting = postingRepository.findById(postingId)
+                .orElseThrow(() -> new RuntimeException("Posting not found"));
+        posting.setQuantity(0);
+        postingRepository.save(posting);
     }
 
     private void resetPostingSequenceIfEmpty() {
