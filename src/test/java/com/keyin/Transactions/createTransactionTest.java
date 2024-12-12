@@ -20,16 +20,13 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-public class createTransactionTest {
+class createTransactionTest {
 
     @Mock
     private TransactionRepository transactionRepository;
 
     @Mock
     private PostingRepository postingRepository;
-
-    @Mock
-    private PostingServices postingServices;
 
     @InjectMocks
     private TransactionServices transactionServices;
@@ -41,7 +38,7 @@ public class createTransactionTest {
 
     // Test for successful transaction creation.
     @Test
-    public void testCreateTransaction_Success() {
+    void testCreateTransaction_Success() {
         Long postingId = 1L;
         String sellerId = "seller123";
         String buyerId = "buyer123";
@@ -71,7 +68,7 @@ public class createTransactionTest {
 
     //   Test for not enough quantity available.
     @Test
-    public void testCreateTransaction_NotEnoughQuantity() {
+    void testCreateTransaction_NotEnoughQuantity() {
         Long postingId = 1L;
         String sellerId = "seller123";
         String buyerId = "buyer123";
@@ -94,7 +91,7 @@ public class createTransactionTest {
 
     // Test for posting not found.
     @Test
-    public void testCreateTransaction_PostingNotFound() {
+    void testCreateTransaction_PostingNotFound() {
         Long postingId = 1L;
         String sellerId = "seller123";
         String buyerId = "buyer123";
@@ -113,7 +110,7 @@ public class createTransactionTest {
 
     // Test for null posting ID.
     @Test
-    public void testCreateTransaction_NullPostingId() {
+    void testCreateTransaction_NullPostingId() {
         Long postingId = null;
         String sellerId = "seller123";
         String buyerId = "buyer123";
@@ -130,7 +127,7 @@ public class createTransactionTest {
 
     // Test for transaction amount calculation.
     @Test
-    public void testCreateTransaction_TransactionAmountCalculation() {
+    void testCreateTransaction_TransactionAmountCalculation() {
         Long postingId = 1L;
         String sellerId = "seller123";
         String buyerId = "buyer123";
