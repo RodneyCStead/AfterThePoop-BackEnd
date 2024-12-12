@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
-class PostingSearchesTest {
+class PostingServicesSearchMethodsTest {
 
     @Mock
     private PostingRepository postingRepository;
