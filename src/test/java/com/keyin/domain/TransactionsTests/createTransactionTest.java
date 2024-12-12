@@ -1,8 +1,7 @@
-package com.keyin.Transactions;
+package com.keyin.domain.TransactionsTests;
 
 import com.keyin.domain.Postings.Posting;
 import com.keyin.domain.Postings.PostingRepository;
-import com.keyin.domain.Postings.PostingServices;
 import com.keyin.domain.Transactions.Transaction;
 import com.keyin.domain.Transactions.TransactionRepository;
 import com.keyin.domain.Transactions.TransactionServices;
