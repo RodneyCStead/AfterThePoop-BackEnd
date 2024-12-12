@@ -87,22 +87,14 @@ public class PostingServices {
 
     @Transactional
     public void deletePosting(Long postingId) {
+        if (postingId == null) {
+            throw new IllegalArgumentException("Posting ID cannot be null");
+        }
+
         Posting posting = postingRepository.findById(postingId)
                 .orElseThrow(() -> new RuntimeException("Posting not found"));
+
         posting.setQuantity(0);
         postingRepository.save(posting);
-    }
-
-    private void resetPostingSequenceIfEmpty() {
-        String checkIfEmptyQuery = "SELECT COUNT(*) FROM posting";
-        Integer count = jdbcTemplate.queryForObject(checkIfEmptyQuery, Integer.class);
-
-        if (count != null && count == 0) {
-            String resetSequenceQuery = "ALTER TABLE posting AUTO_INCREMENT = 1";
-            jdbcTemplate.execute(resetSequenceQuery);
-
-            String updateSequenceTableQuery = "UPDATE posting_sequence SET next_val = 1";
-            jdbcTemplate.execute(updateSequenceTableQuery);
-        }
     }
 }
