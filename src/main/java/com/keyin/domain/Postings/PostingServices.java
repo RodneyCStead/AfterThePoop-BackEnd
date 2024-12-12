@@ -69,19 +69,31 @@ public class PostingServices {
         return postingRepository.findBySellerIdAndQuantityGreaterThan(sellerId, 0);
     }
 
-    public Iterable<Posting> searchByNPercent(double npercent) {
+    public Iterable<Posting> searchByNPercent(Double npercent) {
+        if (npercent == null) {
+            throw new IllegalArgumentException("N Percent cannot be null");
+        }
         return postingRepository.findByNPercentAndQuantityGreaterThan(npercent, 0);
     }
 
-    public Iterable<Posting> searchByKPercent(double kpercent) {
+    public Iterable<Posting> searchByKPercent(Double kpercent) {
+        if (kpercent == null) {
+            throw new IllegalArgumentException("K Percent cannot be null");
+        }
         return postingRepository.findByKPercentAndQuantityGreaterThan(kpercent, 0);
     }
 
-    public Iterable<Posting> searchByPPercent(double ppercent) {
+    public Iterable<Posting> searchByPPercent(Double ppercent) {
+        if (ppercent == null) {
+            throw new IllegalArgumentException("P Percent cannot be null");
+        }
         return postingRepository.findByPPercentAndQuantityGreaterThan(ppercent, 0);
     }
 
-    public Iterable<Posting> searchByPrice(double price) {
+    public Iterable<Posting> searchByPrice(Double price) {
+        if (price == null) {
+            throw new IllegalArgumentException("Price cannot be null");
+        }
         return postingRepository.findByPriceAndQuantityGreaterThan(price, 0);
     }
 
