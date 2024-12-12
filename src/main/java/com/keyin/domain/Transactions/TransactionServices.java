@@ -25,6 +25,9 @@ public class TransactionServices {
 
     @Transactional
     public Transaction createTransaction(Long postingId, String sellerId, String buyerId, int quantity) {
+        if (postingId == null) {
+            throw new IllegalArgumentException("Posting ID cannot be null");
+        }
         Posting posting = postingRepository.findById(postingId)
                 .orElseThrow(() -> new RuntimeException("Posting not found"));
 
