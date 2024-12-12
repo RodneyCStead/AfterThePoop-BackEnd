@@ -1,4 +1,4 @@
-package com.keyin.domain.PostingsTest;
+package com.keyin.domain.PostingsTests;
 
 
 import com.keyin.domain.Postings.Posting;
