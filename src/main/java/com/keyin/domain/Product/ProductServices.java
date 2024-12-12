@@ -14,4 +14,8 @@ public class ProductServices {
     public Iterable<Product> createProducts(List<Product> products) {
         return productRepository.saveAll(products);
     }
+
+    public Iterable<Product> getProducts() {
+        return productRepository.findAll();
+    }
 }

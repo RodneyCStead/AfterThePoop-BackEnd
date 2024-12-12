@@ -17,4 +17,9 @@ public class ProductController {
     public Iterable<Product> createProducts(@RequestBody List<Product> products) {
         return productServices.createProducts(products);
     }
+
+    @GetMapping
+    public Iterable<Product> getProducts() {
+        return productServices.getProducts();
+    }
 }
