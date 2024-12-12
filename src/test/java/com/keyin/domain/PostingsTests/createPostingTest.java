@@ -5,13 +5,12 @@ import com.keyin.domain.Postings.PostingRepository;
 import com.keyin.domain.Postings.PostingServices;
 import com.keyin.domain.Product.Product;
 import com.keyin.domain.Product.ProductRepository;
-import com.keyin.domain.Transactions.TransactionRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.jdbc.core.JdbcTemplate;
+
 
 import java.util.Optional;
 
@@ -26,12 +25,6 @@ class createPostingTest {
 
     @Mock
     private ProductRepository productRepository;
-
-    @Mock
-    private TransactionRepository transactionRepository;
-
-    @Mock
-    private JdbcTemplate jdbcTemplate;
 
     @InjectMocks
     private PostingServices postingServices;
