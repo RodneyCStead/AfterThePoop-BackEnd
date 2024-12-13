@@ -4,7 +4,7 @@ services:
     ports:
       - 8080:8080
     environment:
-#      - spring.datasource.url=jdbc:mysql://Public Ipv 4 address of instance/afterthepoop_db
-      - spring.datasource.url = jdbc:mysql://host.docker.internal:3306/afterthepoop_db
+      - spring.datasource.url=jdbc:mysql://afterthepoop-db.cru2gq64ulg6.us-east-1.rds.amazonaws.com/afterthepoop-db?enabledTLSProtocols=TLSv1.2
+#      - spring.datasource.url = jdbc:mysql://host.docker.internal:3306/afterthepoop_db
       - spring.datasource.username=root
       - spring.datasource.password=Lilly@#$%1
