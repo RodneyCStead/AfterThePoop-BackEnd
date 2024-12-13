@@ -18,7 +18,7 @@ public class TransactionController {
 
     @GetMapping
     public Iterable<Transaction> getAllTransactions() {
-        return transactionServices.getAllTransactions();
+        return transactionServices.getTransactions();
     }
 
     @GetMapping("/transaction")
