@@ -1,6 +1,5 @@
 package com.keyin.domain.PostingsTests;
 
-
 import com.keyin.domain.Postings.Posting;
 import com.keyin.domain.Postings.PostingRepository;
 import com.keyin.domain.Postings.PostingServices;
@@ -9,9 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
 import java.util.Collections;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
