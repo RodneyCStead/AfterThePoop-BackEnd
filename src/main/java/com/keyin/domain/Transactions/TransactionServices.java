@@ -60,7 +60,7 @@ public class TransactionServices {
         return savedTransaction;
     }
 
-    public Iterable<Transaction> getAllTransactions() {
+    public Iterable<Transaction> getTransactions() {
         return transactionRepository.findAll();
     }
 
